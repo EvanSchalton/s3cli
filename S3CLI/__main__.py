@@ -14,7 +14,7 @@ def main():
     
     \b
     If this is your first time using the s3Rev CLI please run the
-    `python s3Rev setup-guide` command for more information
+    `s3cli setup-guide` command for more information
     
     """
     pass
@@ -37,10 +37,10 @@ def setup_guide():
     'S3CLI_AWS_USER_CONFIG'
     
     You can do that through your os or by using the 'set-config' command:
-    `python s3Rev set-config YOUR-FILE-PATH`
+    `s3cli set-config YOUR-FILE-PATH`
     
     Now that you're all setup, run the --help command to learn about the s3Rev commands
-    `python s3Rev --help`
+    `s3cli --help`
     """)
 
 @main.command()
@@ -49,7 +49,7 @@ def set_config(path):
     """
     \b
     Saves the your AWS config json path to the environment variable 'S3CLI_AWS_USER_CONFIG'
-    Ex: `python s3Rev set-config PATH_TO_CONFIG.json`
+    Ex: `s3cli set-config PATH_TO_CONFIG.json`
     """
     if os.path.exists(path):
         try:    
@@ -84,7 +84,7 @@ def show_table(unit):
     """
     \b
     Lists all of the s3 buckets and their metrics in a tabluar form
-    Ex: `python s3Rev show-table --unit=Mb`
+    Ex: `s3cli show-table --unit=Mb`
     """
     cli_client = s3Reviewer()
 
@@ -102,7 +102,7 @@ def save_table(path, unit):
     """
     \b
     Saves all of the s3 buckets and their metrics to an excel or csv
-    Ex: `python s3Rev save-table SAVE_AS_PATH.csv|.xlsx --unit=Mb`
+    Ex: `s3cli save-table SAVE_AS_PATH.csv|.xlsx --unit=Mb`
     """
     cli_client = s3Reviewer()
     if cli_client.saveDetailTable(path=path, unit=unit):
@@ -116,7 +116,7 @@ def list_buckets():
     """
     \b
     Lists all accessible s3 buckets
-    Ex: `python s3Rev list-buckets`
+    Ex: `s3cli list-buckets`
     """
     cli_client = s3Reviewer()
     print("Authorized user on the followng buckets:")
@@ -135,7 +135,7 @@ def bucket_details(bucket, unit):
     """
     \b
     Gets the details for the provided bucket
-    Ex: `python s3rev bucket-details --bucket=BUCKETNAME --unit=mb`
+    Ex: `s3cli bucket-details --bucket=BUCKETNAME --unit=mb`
     """
     cli_client = s3Reviewer()
 
