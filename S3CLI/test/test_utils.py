@@ -1,4 +1,4 @@
-from ..utils import loadConfig
+from S3CLI.utils import loadConfig
 import os
 
 configPath = os.environ['S3CLI_AWS_USER_CONFIG']
