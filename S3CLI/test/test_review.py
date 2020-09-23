@@ -2,8 +2,8 @@ import pytest
 import pandas as pd
 from timeit import timeit
 
-from ..s3connection import connect
-from ..s3review import s3Reviewer
+from S3CLI.s3connection import connect
+from S3CLI.s3review import s3Reviewer
 
 TIMEIT_COUNT = 1
 
@@ -58,13 +58,13 @@ def test_preload_bucket_load():
     """Iniitalizing the client w/out intitalizing the buckets should be faster"""
 
     unloaded_time = timeit(
-        setup = "from s3review import s3Reviewer",
+        setup = "from S3CLI.s3review import s3Reviewer",
         stmt = "unloaded_cli_client = s3Reviewer(preload=False)",
         number = TIMEIT_COUNT
     )
 
     preloaded_time = timeit(
-        setup = "from s3review import s3Reviewer",
+        setup = "from S3CLI.s3review import s3Reviewer",
         stmt = "preloaded_cli_client = s3Reviewer(preload=True)",
         number = TIMEIT_COUNT
     )
@@ -79,13 +79,13 @@ def test_preload_bucket_details():
 
 
     unloaded_time = timeit(
-        setup = "from s3review import s3Reviewer\nunloaded_cli_client = s3Reviewer(preload=False)",
+        setup = "from S3CLI.s3review import s3Reviewer\nunloaded_cli_client = s3Reviewer(preload=False)",
         stmt = "{bucket.name: bucket.details(calculate=True) for bucket in unloaded_cli_client.buckets}",
         number = TIMEIT_COUNT
     )
 
     preloaded_time = timeit(
-        setup = "from s3review import s3Reviewer\npreloaded_cli_client = s3Reviewer(preload=True)",
+        setup = "from S3CLI.s3review import s3Reviewer\npreloaded_cli_client = s3Reviewer(preload=True)",
         stmt = "{bucket.name: bucket.details() for bucket in preloaded_cli_client.buckets}",
         number = TIMEIT_COUNT
     )

@@ -1,5 +1,5 @@
-from ..s3connection import connect
-from ..utils import loadConfig
+from S3CLI.s3connection import connect
+from S3CLI.utils import loadConfig
 import os
 import boto3
 
