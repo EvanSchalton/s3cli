@@ -21,7 +21,7 @@ The config should contain the follows:
 you can reference/copy the aws_config_template.json file
 The AWS details can be found in the IAM service on AWS.
 
-There's a command in the CLI to set this environment variable, but you can optionally set it directly in the terminal:
+There's a command in the CLI to set this environment variable (`S3CLI_AWS_USER_CONFIG`), but you can optionally set it directly in the terminal:
 ```s3cli set-config PATH-TO-YOUR-CONFIG-JSON```
 
 # Usage
