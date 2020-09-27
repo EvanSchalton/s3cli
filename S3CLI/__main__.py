@@ -58,10 +58,13 @@ def set_config(path):
 
             OSName = platform.system().lower()
             if 'windows' in OSName:
-                subprocess.call(f"setx S3CLI_AWS_USER_CONFIG {path}")
+                executionString = f"setx S3CLI_AWS_USER_CONFIG {path}"
             else:
                 # should work on mac/linux
-                subprocess.call(f"export S3CLI_AWS_USER_CONFIG={path}")
+                executionString = f"export S3CLI_AWS_USER_CONFIG={path}"
+
+            print("Running command:", executionString)
+            subprocess.call(executionString)
 
             click.echo(f"""
             'S3CLI_AWS_USER_CONFIG' set to {path}
@@ -69,10 +72,8 @@ def set_config(path):
             """)
         except:
             click.echo(f"Unable to set variable `S3CLI_AWS_USER_CONFIG` please report this error and/or set it manually")
-
     else:
         click.echo(f"Invalid Path: '{path}'")
-
 
 ### ALL BUCKETS
 
