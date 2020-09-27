@@ -64,7 +64,7 @@ def set_config(path):
                 executionString = f"export S3CLI_AWS_USER_CONFIG={path}"
 
             print("Running command:", executionString)
-            subprocess.call(executionString)
+            subprocess.call(executionString, shell=True)
 
             click.echo(f"""
             'S3CLI_AWS_USER_CONFIG' set to {path}
