@@ -71,7 +71,7 @@ def set_config(path):
             you must close & reopen your terminal for the changes to take effect
             """)
         except Exception as e:
-            click.echo("Exception:", e)
+            print("Exception:", e)
             click.echo(f"Unable to set variable `S3CLI_AWS_USER_CONFIG` please report this error and/or set it manually")
     else:
         click.echo(f"Invalid Path: '{path}'")
